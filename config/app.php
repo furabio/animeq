@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
         //
 
         /*
@@ -227,7 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         /*
-         * NEWS
+         * NEW
          */
 
         'Form' => Collective\Html\FormFacade::class,

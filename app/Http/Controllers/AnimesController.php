@@ -10,7 +10,7 @@ use App\Http\Requests;
 class AnimesController extends Controller
 {
     private $animes;
-    
+
     public function __construct(Anime $animes)
     {
         $this->animes = $animes;
