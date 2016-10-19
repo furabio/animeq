@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Anime;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\AnimeRequest;
 use App\Http\Requests;
+use DB;
 
 class AnimesController extends Controller
 {
@@ -25,7 +27,9 @@ class AnimesController extends Controller
 
     public function create()
     {
-        return view('admin.animes.create');
+        $categories = Category::pluck('name', 'id');
+
+        return view('admin.animes.create')->withCategories($categories);
     }
 
     public function edit($id)

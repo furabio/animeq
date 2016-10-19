@@ -27,6 +27,9 @@
                             {{ Form::label('genre', 'Gênero: ') }}
                             {{ Form::text('genre', null, ['class' => 'form-control', 'placeholder' => 'Ação , Fantasia, Superpoder, etc...']) }}
 
+                            {{ Form::label('category', 'Categoria') }}
+                            {{ Form::select('category', $categories, null, ['class' => 'form-control', 'placeholder' => 'Selecione uma categoria']) }}
+
                             {{ Form::label('director', 'Diretor/Direção: ') }}
                             {{ Form::text('director', null, ['class' => 'form-control', 'placeholder' => 'Tomohisa Taguchi...']) }}
 
