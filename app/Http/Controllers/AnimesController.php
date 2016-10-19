@@ -35,7 +35,7 @@ class AnimesController extends Controller
 
     public function store(AnimeRequest $request)
     {
-        
+        return $request->all();
     }
 
     public function update(AnimeRequest $request, $id)

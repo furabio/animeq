@@ -22,7 +22,7 @@ class CreateAnimesTable extends Migration
             $table->string('image');
             $table->string('director');
             $table->string('studio');
-            $table->string('release');
+            $table->string('release')->default(0);
             $table->integer('status');
             $table->integer('year');
             $table->timestamps();

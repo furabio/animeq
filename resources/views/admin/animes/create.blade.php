@@ -4,6 +4,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">Novos animes:</div>
                     <div class="panel-body">
@@ -25,7 +34,16 @@
                             {{ Form::text('studio', null, ['class' => 'form-control', 'placeholder' => 'Studio Pierrot...']) }}
 
                             {{ Form::label('release', 'Dia de lançamento: ') }}
-                            {{ Form::text('release', null, ['class' => 'form-control', 'placeholder' => 'Sexta-Feira, Quarta-Feira, etc ...']) }}
+                            {{ Form::select('release',
+                                        [   '1' => 'Domingo',
+                                            '2' => 'Segunda-Feira',
+                                            '3' => 'Terça-Feira',
+                                            '4' => 'Quarta-Feira',
+                                            '5' => 'Quinta-Feira',
+                                            '6' => 'Sexta-Feira',
+                                            '7' => 'Sábado'
+                                        ]
+                                        ,null, ['class' => 'form-control', 'placeholder' => 'Dia da semana']) }}
 
                             {{ Form::label('year', 'Ano: ') }}
                             {{ Form::number('year', null, ['class' => 'form-control', 'placeholder' => '2016 ...']) }}

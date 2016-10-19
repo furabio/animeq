@@ -13,7 +13,7 @@ class AnimeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class AnimeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:100|unique:animes,name',
+            'sinopse' => 'required|max:600',
+            'genre' => 'required|max:60',
+            'director' => 'required|max:30',
+            'studio' => 'required|max:60',
+            'status' => 'required',
+            'year' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,png',
         ];
     }
 }
