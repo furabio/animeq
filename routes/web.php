@@ -30,6 +30,15 @@ Route::group(['prefix' => 'admin/painel'], function() {
         Route::put('', ['uses' => 'AnimesController@update', 'as' => 'animes.update']);
     });
 
+    // Categories
+
+    Route::group(['prefix' => 'categories'], function(){
+        Route::get('', ['uses' => 'CategoriesController@allCategories', 'as' => 'categories.all']);
+        Route::get('create', ['uses' => 'CategoriesController@create', 'as' => 'categories.create']);
+        Route::post('', ['uses' => 'CategoriesController@store', 'as' => 'categories.store']);
+        Route::delete('delete/{id}', ['uses' => 'CategoriesController@delete', 'as' => 'categories.delete']);
+    });
+
     // Episodes
 
 
