@@ -46,11 +46,10 @@ class CategoriesController extends Controller
 
     public function delete($id)
     {
-        $category = $this->categories->findOrFail($id);
 
-        $category->delete();
+        $this->categories->findOrFail($id)->delete();
 
-        Session::flash('success', 'A categoria ' . $this->categories->findOrFail($id)->name . ' foi deletada com sucesso!');
+        Session::flash('success', 'A categoria foi deletada com sucesso!');
 
         return redirect()->route('categories.all');
     }
