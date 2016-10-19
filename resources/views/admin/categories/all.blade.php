@@ -8,7 +8,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Adicione uma nova categoria:</div>
                     <div class="panel-body">
-                        @if(isset($categories) && !empty($categories))
+                        @if(count($categories) > 0)
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -31,6 +31,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        @else
+                            <div class="jumbotrom">
+                                <span>Crie uma nova categoria, para começar a adicionar animes.</span>
+                                <a class="btn btn-primary" href="{{ route('categories.create') }}">Criar</a>
+                            </div>
                         @endif
                     </div>
                 </div>
