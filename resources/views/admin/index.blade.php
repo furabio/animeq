@@ -17,13 +17,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($animes as $anime)
                                 <tr>
-                                    @foreach($animes as $anime)
-                                        <td>{{ $anime->id }}</td>
-                                        <td>{{ $anime->name }}</td>
-                                        <td>{{ $anime->category_id }}</td>
-                                    @endforeach
+                                    <td>{{ $anime->id }}</td>
+                                    <td>{{ $anime->name }}</td>
+                                    <td>{{ $anime->category->name }}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

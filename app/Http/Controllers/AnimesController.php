@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Anime;
 use App\Category;
-use Illuminate\Http\Request;
-use App\Http\Requests\AnimeRequest;
+use App\Http\Requests\AnimesRequest;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
@@ -35,38 +34,48 @@ class AnimesController extends Controller
 
     public function edit($id)
     {
+        $anime = $this->animes->findOrFail($id);
+        $categories = Category::pluck('name', 'id');
 
+        return view('admin.animes.edit')->withAnime($anime)->withCategories($categories);
     }
 
-    public function store(AnimeRequest $requests)
+    public function store(AnimesRequest $request)
     {
-        $image = $requests->file('image');
+        $image = $request->file('image');
         $filaname = time() . '.' . $image->getClientOriginalExtension();
         $path = public_path('images/animes/' . $filaname);
 
         Image::make($image->getRealPath())->resize(280, 400)->save($path);
 
-        $this->animes->create([
-            'name' => $requests->name,
-            'category_id' => $requests->category,
-            'sinopse' => $requests->sinopse,
-            'genre' => $requests->genre,
-            'image' => $filaname,
-            'director' => $requests->director,
-            'studio' => $requests->studio,
-            'release' => $requests->release,
-            'status' => $requests->status,
-            'year' => $requests->year
-        ]);
+        $data = $request->all();
+        $data['category_id'] = $request->category;
+        $data['image'] = $filaname;
 
-        Session::flash('success', "O anime " . $requests->name . " foi  criado com sucesso!");
+        $this->animes->create($data);
+
+        Session::flash('success', "O anime " . $request->name . " foi  criado com sucesso!");
 
         return redirect()->route('animes.index');
     }
 
-    public function update(AnimeRequest $requests, $id)
+    public function update(AnimesRequest $request, $id)
     {
+        if ($request->image)
+        {
+            $image = $request->image;
+            $filaname = time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('images/animes/' . $filaname);
 
+            Image::make($image->getRealPath())->resize(280, 400)->save($path);
+        }
+
+        $data = $request->all();
+        $data['image'] = $filaname;
+
+        $this->animes->findOrFail($id)->update($data);
+
+        return redirect()->route('animes.index');
     }
 
     public function delete($id)

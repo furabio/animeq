@@ -10,6 +10,7 @@ class Anime extends Model
     use Sluggable;
 
     protected $fillable = [
+        'category_id',
         'name',
         'slug_name',
         'sinopse',

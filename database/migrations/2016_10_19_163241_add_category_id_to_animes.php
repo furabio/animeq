@@ -14,7 +14,7 @@ class AddCategoryIdToAnimes extends Migration
     public function up()
     {
         Schema::table('animes', function (Blueprint $table){
-            $table->unsignedInteger('category_id')->after('id')->nullable();
+            $table->unsignedInteger('category_id')->after('id');
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')

@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin/painel'], function() {
         Route::get('create', ['uses' => 'AnimesController@create', 'as' => 'animes.create']);
         Route::post('store', ['uses' => 'AnimesController@store', 'as' => 'animes.store']);
         Route::get('edit/{id}', ['uses' => 'AnimesController@edit', 'as' => 'animes.edit']);
-        Route::put('', ['uses' => 'AnimesController@update', 'as' => 'animes.update']);
+        Route::put('{id}', ['uses' => 'AnimesController@update', 'as' => 'animes.update']);
     });
 
     // Categories
