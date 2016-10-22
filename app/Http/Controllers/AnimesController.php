@@ -68,12 +68,16 @@ class AnimesController extends Controller
             $path = public_path('images/animes/' . $filaname);
 
             Image::make($image->getRealPath())->resize(280, 400)->save($path);
+
+            $data = $request->all();
+            $data['image'] = $filaname;
         }
 
-        $data = $request->all();
-        $data['image'] = $filaname;
+        $data = isset($data) ? $data : $request->all();
 
         $this->animes->findOrFail($id)->update($data);
+
+        Session::flash('success', 'Os dados foram atualizados com sucesso!');
 
         return redirect()->route('animes.index');
     }
