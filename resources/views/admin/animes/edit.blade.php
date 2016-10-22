@@ -61,7 +61,7 @@
                                 {{ Form::file('image', null, ['id' => 'input-file']) }}
                             </div>
 
-                            {{ Form::submit('Criar', ['class' => 'btn btn-success btn-block', 'style' => 'margin-top: 10px;']) }}
+                            {{ Form::submit('Atualizar', ['class' => 'btn btn-success btn-block', 'style' => 'margin-top: 10px;']) }}
 
                         {!! Form::close() !!}
                     </div>

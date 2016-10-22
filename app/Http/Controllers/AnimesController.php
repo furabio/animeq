@@ -84,6 +84,10 @@ class AnimesController extends Controller
 
     public function delete($id)
     {
+        $this->animes->findOrFail($id)->delete();
 
+        Session::flash('success', 'O anime foi deletado com sucesso!');
+
+        return redirect()->route('animes.index');
     }
 }

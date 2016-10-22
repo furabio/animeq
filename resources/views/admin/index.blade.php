@@ -14,6 +14,7 @@
                                     <th>#</th>
                                     <th>Nome</th>
                                     <th>Categoria</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -22,6 +23,12 @@
                                     <td>{{ $anime->id }}</td>
                                     <td>{{ $anime->name }}</td>
                                     <td>{{ $anime->category->name }}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ route('animes.edit', $anime->id) }}">Editar</a>
+                                        {!! Form::open(['route' => ['animes.delete', $anime->id], 'method' => 'DELETE']) !!}
+                                            {{ Form::submit('Deletar', ['class' => 'btn btn-danger']) }}
+                                        {!! Form::close() !!}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

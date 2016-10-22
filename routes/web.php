@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin/painel'], function() {
         Route::post('store', ['uses' => 'AnimesController@store', 'as' => 'animes.store']);
         Route::get('edit/{id}', ['uses' => 'AnimesController@edit', 'as' => 'animes.edit']);
         Route::put('{id}', ['uses' => 'AnimesController@update', 'as' => 'animes.update']);
+        Route::delete('delete/{id}', ['uses' => 'AnimesController@delete', 'as' => 'animes.delete']);
     });
 
     // Categories
